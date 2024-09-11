@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       FORCE_COLOR: 1
+      # https://docs.astral.sh/uv/configuration/environment/
+      XDG_DATA_HOME: $RUNNER_TOOL_CACHE/Python
     steps:
       - name: List installed Python version
-        # Expects:
-        # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md#python
         run: which -a python
-      - name: Show Python 3.12 patch
-        run: python3 -V
+      - name: Show default Python version
+        run: python3 -VV
       - name: List cached Python versions
         # https://github.com/actions/setup-python/blob/main/docs/advanced-usage.md#hosted-tool-cache
         run: ls -l $RUNNER_TOOL_CACHE/Python/
@@ -25,12 +25,13 @@ jobs:
       #     sudo apt-get install tree
       #     tree $RUNNER_TOOL_CACHE/Python/3.12.5
       - name: Cached Python 3.12.5 - run
-        run: $RUNNER_TOOL_CACHE/Python/3.12.5/x64/bin/python -V
+        # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md#python
+        run: $RUNNER_TOOL_CACHE/Python/3.12.5/x64/bin/python -VV
       - name: Install uv
         uses: astral-sh/setup-uv@v2
         with:
-          version: "0.4.9"
+          version: "0.4.8"
       - name: List Python versions with uv
         run: uv python list --offline
-      - name: Install Python 3.12
-        run: uv python install 3.12 --offline
+      - name: Install Python 3.12.5
+        run: uv python install 3.12.5 --offline
