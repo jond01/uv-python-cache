@@ -29,6 +29,9 @@ jobs:
         uses: astral-sh/setup-uv@v2
         with:
           version: "0.4.8"
+          # Enable "cache" - only uv cache, though.
+          # https://github.com/astral-sh/setup-uv?tab=readme-ov-file#enable-caching
+          enable-cache: true
       - name: List Python versions with uv
         env:
           # https://docs.astral.sh/uv/configuration/environment/
