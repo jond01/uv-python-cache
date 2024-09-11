@@ -2,6 +2,7 @@ name: Test uv cache
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   test:
