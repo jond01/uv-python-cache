@@ -11,7 +11,7 @@ jobs:
     env:
       FORCE_COLOR: 1
       # https://docs.astral.sh/uv/configuration/environment/
-      XDG_DATA_HOME: $RUNNER_TOOL_CACHE/Python
+      XDG_DATA_HOME:  ${{ runner.tool_cache }}/Python
     steps:
       - name: List installed Python version
         run: which -a python
