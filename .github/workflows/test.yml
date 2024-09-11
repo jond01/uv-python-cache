@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       FORCE_COLOR: 1
-      # https://docs.astral.sh/uv/configuration/environment/
-      XDG_DATA_HOME:  ${{ runner.tool_cache }}/Python
     steps:
       - name: List installed Python version
         run: which -a python
@@ -32,6 +30,12 @@ jobs:
         with:
           version: "0.4.8"
       - name: List Python versions with uv
+        env:
+          # https://docs.astral.sh/uv/configuration/environment/
+          XDG_DATA_HOME:  ${{ runner.tool_cache }}/Python
         run: uv python list --offline
       - name: Install Python 3.12.5
+        env:
+          # https://docs.astral.sh/uv/configuration/environment/
+          XDG_DATA_HOME:  ${{ runner.tool_cache }}/Python
         run: uv python install 3.12.5 --offline
