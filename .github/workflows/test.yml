@@ -25,8 +25,7 @@ jobs:
       - name: Cached Python 3.12.5 - run
         # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md#python
         run: $RUNNER_TOOL_CACHE/Python/3.12.5/x64/bin/python -VV
-      - name: Install uv
-        uses: "astral-sh/setup-uv@v2.1.1"
+      - uses: "astral-sh/setup-uv@v2.1.1"
         with:
           version: "0.4.8"
           # Enable "cache" - only uv cache, though.
