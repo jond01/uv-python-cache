@@ -1,0 +1,22 @@
+name: Test uv cache
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    # https://github.com/actions/runner-images?tab=readme-ov-file#available-images
+    runs-on: ubuntu-22.04
+    steps:
+      - name: List installed Python versions
+        # Expects:
+        # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md#python
+        run: which -a python
+      - name: Show Python 3.12 patch
+        run: python3.12 -V
+      - name: Install uv
+        uses: astral-sh/setup-uv@v2
+        with:
+          version: "0.4.9"
+      - name: Install Python 3.12
+        run: uv python install 3.12 --offline --color=always
