@@ -36,8 +36,8 @@ jobs:
         env:
           # https://docs.astral.sh/uv/configuration/environment/
           XDG_DATA_HOME:  ${{ runner.tool_cache }}/Python
-        run: uv python list #--offline
+        run: uv python list --offline
       - name: Install Python 3.12.5
         env:
           XDG_DATA_HOME:  ${{ runner.tool_cache }}/Python
-        run: uv python install 3.12.5 #--offline
+        run: uv python install 3.12.5 --offline
