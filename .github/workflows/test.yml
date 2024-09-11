@@ -20,12 +20,12 @@ jobs:
       - name: List cached Python versions
         # https://github.com/actions/setup-python/blob/main/docs/advanced-usage.md#hosted-tool-cache
         run: ls -l $RUNNER_TOOL_CACHE/Python/
-      - name: Cached Python 3.12.5
-        run: |
-          sudo apt-get install tree
-          tree $RUNNER_TOOL_CACHE/Python/3.12.5
-      # - name: Cached Python 3.12.5 - run
-      #   run: $RUNNER_TOOL_CACHE/Python/3.12.5/bin/python -V
+      # - name: Cached Python 3.12.5
+      #   run: |
+      #     sudo apt-get install tree
+      #     tree $RUNNER_TOOL_CACHE/Python/3.12.5
+      - name: Cached Python 3.12.5 - run
+        run: $RUNNER_TOOL_CACHE/Python/3.12.5/x64/bin/python -V
       - name: Install uv
         uses: astral-sh/setup-uv@v2
         with:
