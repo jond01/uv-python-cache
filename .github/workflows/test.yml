@@ -14,7 +14,7 @@ jobs:
         # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md#python
         run: which -a python
       - name: Show Python 3.12 patch
-        run: python3.12 -V
+        run: python3 -V
       - name: Install uv
         uses: astral-sh/setup-uv@v2
         with:
