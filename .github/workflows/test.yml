@@ -11,6 +11,7 @@ jobs:
     env:
       FORCE_COLOR: 1
       PYTHON_VERSION: "3.12.5"
+      UV_CONFIG_FILE: uv.toml
     steps:
       - uses: actions/setup-python@v5
         with:
