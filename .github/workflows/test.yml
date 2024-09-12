@@ -41,8 +41,8 @@ jobs:
         # env:
         #   # https://docs.astral.sh/uv/configuration/environment/
         #   XDG_DATA_HOME:  ${{ runner.tool_cache }}/Python
-        run: uv python list
+        run: uv python list --verbose
       - name: Install Python $PYTHON_VERSION
         env:
           XDG_DATA_HOME:  ${{ runner.tool_cache }}/Python
-        run: uv python install $PYTHON_VERSION
+        run: uv python install $PYTHON_VERSION --verbose
