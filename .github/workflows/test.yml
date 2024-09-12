@@ -10,33 +10,37 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       FORCE_COLOR: 1
+      PYTHON_VERSION: "3.12.5"
     steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
       - name: List installed Python version
         run: which -a python
       - name: Show default Python version
         run: python3 -VV
-      - name: List cached Python versions
-        # https://github.com/actions/setup-python/blob/main/docs/advanced-usage.md#hosted-tool-cache
-        run: ls -l $RUNNER_TOOL_CACHE/Python/
+      # - name: List cached Python versions
+      #   # https://github.com/actions/setup-python/blob/main/docs/advanced-usage.md#hosted-tool-cache
+      #   run: ls -l $RUNNER_TOOL_CACHE/Python/
       # - name: Cached Python 3.12.5
       #   run: |
       #     sudo apt-get install tree
       #     tree $RUNNER_TOOL_CACHE/Python/3.12.5
-      - name: Cached Python 3.12.5 - run
-        # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md#python
-        run: $RUNNER_TOOL_CACHE/Python/3.12.5/x64/bin/python -VV
+      # - name: Cached Python 3.12.5 - run
+      #   # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md#python
+      #   run: $RUNNER_TOOL_CACHE/Python/3.12.5/x64/bin/python -VV
       - uses: "astral-sh/setup-uv@v2.1.1"
         with:
           version: "0.4.8"
           # Enable "cache" - only uv cache, though.
           # https://github.com/astral-sh/setup-uv?tab=readme-ov-file#enable-caching
-          enable-cache: true
+          # enable-cache: true
       - name: List Python versions with uv
-        env:
-          # https://docs.astral.sh/uv/configuration/environment/
-          XDG_DATA_HOME:  ${{ runner.tool_cache }}/Python
+        # env:
+        #   # https://docs.astral.sh/uv/configuration/environment/
+        #   XDG_DATA_HOME:  ${{ runner.tool_cache }}/Python
         run: uv python list --offline
-      - name: Install Python 3.12.5
+      - name: Install Python $PYTHON_VERSION
         env:
           XDG_DATA_HOME:  ${{ runner.tool_cache }}/Python
-        run: uv python install 3.12.5 --offline
+        run: uv python install $PYTHON_VERSION --offline
