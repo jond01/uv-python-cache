@@ -38,11 +38,6 @@ jobs:
           # https://github.com/astral-sh/setup-uv?tab=readme-ov-file#enable-caching
           # enable-cache: true
       - name: List Python versions with uv
-        # env:
-        #   # https://docs.astral.sh/uv/configuration/environment/
-        #   XDG_DATA_HOME:  ${{ runner.tool_cache }}/Python
         run: uv python list --verbose
       - name: Install Python $PYTHON_VERSION
-        env:
-          XDG_DATA_HOME:  ${{ runner.tool_cache }}/Python
         run: uv python install $PYTHON_VERSION --verbose
