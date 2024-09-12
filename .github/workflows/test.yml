@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       FORCE_COLOR: 1
-      PYTHON_VERSION: "3.12.5"
+      PYTHON_VERSION: "3.10.12"
       UV_CONFIG_FILE: uv.toml
     steps:
       - uses: actions/checkout@v4
